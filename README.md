@@ -23,14 +23,14 @@ A workflow like this is nice because you can easily undo if you realize the chan
 
 Part 1: Making a Change Using Branches
 ===================
-In part 1 of this assignment, you're going to do exactly what you did in your first Git assignment, using a branch.
+In part 1 of this assignment, you're going to do exactly what you did in your first Git assignment, but using a branch.
 
 In your first Git assignment, there was one branch: gh-pages. You made your change on that branch (in Sublime), committed (saved) to that branch (`git commit`), and pushed that branch to GitHub (`git push origin gh-pages`).
 
 In this assignment, we're going to make a new branch called "add-my-name" and make our change to that copy. When we're done, we'll commit it (to "add-my-name") and then merge add-my-name back into gh-pages to send to GitHub.
 
-1. Clone the repository at https://github.com/adamaflynn/MergingAssignment
-2. See what branch we're on: `git branch` (the * beside gh-pages means we're on that branch; ignore add-adams-name until part 2)
+1. Fork the repository at https://github.com/adamaflynn/MergingAssignment and clone your copy
+2. See what branch we're on: `git branch` (the * beside gh-pages means we're on that branch)
 3. Make a new branch: `git checkout -b add-my-name` (the `-b` means "make a new branch")
 4. Now see what branch we're on: `git branch` (you'll see 2 branches, with the * beside add-my-name)
 5. Open Sublime, change index.html to use your first name
@@ -49,7 +49,7 @@ In this assignment, we're going to make a new branch called "add-my-name" and ma
 Part 2: Merge Conflicts 
 ===================
 
-In part 1, we looked at an example where everything goes smoothly. But this isn't always the case. Imagine that there are 2 people working on this project (or you're working on 2 different branches at once). What would happen if both people tried to change the webpage to their own name and merge? If Mr. Simon and Adam were partners, Adam changed the title to "Adam's Sample Assignment" and merged, then Mr. Simon changed it to "Mr. Simon's Sample Assignment" and merged, Git wouldn't know what to do!
+In part 1, we looked at an example where everything goes smoothly. But this isn't always the case. Imagine that there are 2 people working on this project (or you're working on 2 different branches at once). What would happen if both people tried to change the webpage to their own name and merge? If Mr. Simon and Adam were partners, Adam changed the title to "Adam's Sample Assignment", then Mr. Simon changed it to "Mr. Simon's Sample Assignment", Git wouldn't know what to do!
 
 So what does Git do? Well, it asks for help. It tells you what files it's confused about and lets you decide what the right thing to do is.
 
@@ -57,23 +57,24 @@ This happens all the time in real software projects. If you have 20, 50, 100, or
 
 To make things easy, I made a branch in this repository (add-adams-name) that has my name on it. After finishing part 1, if you try to merge add-adams-name into gh-pages, you'll have a merge conflict (since you already added your name). We'll look at how to fix that.
 
-1. Make sure you're on the gh-pages branch (how do we do this, again?)
-2. Try to merge add-adams-name: `git merge add-adams-name`
-3. Git will say there's a conflict
-4. Take a look at what files it's confused about: `git status`
-5. You'll see index.html has a conflict, open it up in Sublime
-6. Find lines like `<<<<<<<<<`, `===========`, and `>>>>>>>>>`. They show you the 2 versions Git has to choose from.
-7. Decide how to fix the file. Maybe it's one or the other. Maybe it's a combination: if we were partners, you could change it to show both our names!
-8. Test that change to make sure it works
-9. "Stage" the file that you fixed
-10. Type `git commit -m "Fixing merge conflict"`
-11. Push the fixed gh-pages branch to GitHub
-12. Check it out in github.io to make sure it works
+1. Add the add-adams-name branch from GitHub: `git branch add-adams-name origin/add-adams-name`
+2. Make sure you're on the gh-pages branch (how do we do this, again?)
+3. Try to merge add-adams-name: `git merge add-adams-name`
+4. Git will say there's a conflict
+5. Take a look at what files it's confused about: `git status`
+6. You'll see index.html has a conflict, open it up in Sublime
+7. Find lines like `<<<<<<<<<`, `===========`, and `>>>>>>>>>`. They show you the 2 versions Git has to choose from.
+8. Decide how to fix the file. Maybe it's one or the other. Maybe it's a combination: if we were partners, you could change it to show both our names!
+9. Test that change to make sure it works
+10. "Stage" the file that you fixed
+11. Type `git commit -m "Fixing merge conflict"`
+12. Push the fixed gh-pages branch to GitHub
+13. Check it out in github.io to make sure it works
 
 Quick Reference
 ============
 
-See what branch you're on: `git branch`
-Make a new branch: `git checkout -b some-branch-name`
-Delete a branch: `git branch -d some-branch-name`
-Merge a branch onto the branch you're on: `git merge some-other-branch`
+* See what branch you're on: `git branch`
+* Make a new branch: `git checkout -b some-branch-name`
+* Delete a branch: `git branch -d some-branch-name`
+* Merge a branch onto the branch you're on: `git merge some-other-branch`
